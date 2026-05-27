@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: flask-backend
+  name: flask-backend-green
   labels:
     app: flask-backend
     version: green
