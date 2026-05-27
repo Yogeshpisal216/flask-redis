@@ -5,7 +5,7 @@ metadata:
   name: flask-backend
   labels:
     app: flask-backend
-    #version: blue
+    version: blue
   namespace: flask-redis
 
 spec:
@@ -13,13 +13,13 @@ spec:
   selector:
     matchLabels:
       app: flask-backend
-      #version: blue
+      version: blue
 
   template:
     metadata:
       labels:
         app: flask-backend
-        #version: blue
+        version: blue
     spec:
       containers:
         - name: flask-backend
