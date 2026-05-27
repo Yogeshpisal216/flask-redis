@@ -1,0 +1,46 @@
+#Blue deployment is a old version of deployment and we need to deploy new version and also trasfer trafic to new version like Green.
+
+apiVersion : apps/v1
+kind : Deployment
+
+metadata :
+  name : pod-blue
+  labels :
+    name : my-pod
+    version : blue
+
+spec :
+  replicas : 2
+  selector :
+    matchLabels :
+      name : my-pod
+      version : blue
+
+  template :
+    metadata :
+      labels :
+        name : my-pod
+        version : blue
+  
+    spec :
+      containers :
+        - name : cont1
+          image:  nginx:latest
+
+---
+
+kind : Service
+apiVersion : v1
+
+metadata :
+  name : my-service
+
+spec :
+  type : NodePort
+  selector :
+    name : my-pod
+    version : blue
+  ports:
+    - port : 80
+      targetPort : 80
+      nodePort : 30080
