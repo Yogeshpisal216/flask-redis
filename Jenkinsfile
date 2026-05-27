@@ -9,12 +9,6 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         checkout scm
-        //     }
-        // }
-
         stage('Build Docker Image') {
             steps {
                 sh '''
@@ -73,14 +67,8 @@ pipeline {
             }
         }
     }
-
-    // post {
-    //     success {
-    //         echo 'CI/CD pipeline completed successfully.'
-    //     }
-
-    //     failure {
-    //         echo 'CI/CD pipeline failed. Check Jenkins console logs.'
-    //     }
-    // }
 }
+
+
+
+
