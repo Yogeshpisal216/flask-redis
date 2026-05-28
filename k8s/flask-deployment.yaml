@@ -60,66 +60,66 @@ spec:
               cpu: "300m"
               memory: "256Mi"
 
----
+# ---
 
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
 
-metadata:
-  name: flask-backend
-  labels:
-    app: flask-backend
-    version: green
-  namespace: flask-redis
+# metadata:
+#   name: flask-backend
+#   labels:
+#     app: flask-backend
+#     version: green
+#   namespace: flask-redis
 
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: flask-backend
-      version: green
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: flask-backend
+#       version: green
 
-  template:
-    metadata:
-      labels:
-        app: flask-backend
-        version: green
-    spec:
-      containers:
-        - name: flask-backend
-          image: nginx:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 5000
+#   template:
+#     metadata:
+#       labels:
+#         app: flask-backend
+#         version: green
+#     spec:
+#       containers:
+#         - name: flask-backend
+#           image: nginx:latest
+#           imagePullPolicy: Always
+#           ports:
+#             - containerPort: 5000
 
-          env:
-            - name: REDIS_HOST
-              value: "redis-service"
-            - name: REDIS_PORT
-              value: "6379"
+#           env:
+#             - name: REDIS_HOST
+#               value: "redis-service"
+#             - name: REDIS_PORT
+#               value: "6379"
 
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 5000
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 3
-            failureThreshold: 3
+#           livenessProbe:
+#             httpGet:
+#               path: /health
+#               port: 5000
+#             initialDelaySeconds: 10
+#             periodSeconds: 10
+#             timeoutSeconds: 3
+#             failureThreshold: 3
 
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: 5000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 3
+#           readinessProbe:
+#             httpGet:
+#               path: /ready
+#               port: 5000
+#             initialDelaySeconds: 5
+#             periodSeconds: 5
+#             timeoutSeconds: 3
+#             failureThreshold: 3
 
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "300m"
-              memory: "256Mi"
+#           resources:
+#             requests:
+#               cpu: "100m"
+#               memory: "128Mi"
+#             limits:
+#               cpu: "300m"
+#               memory: "256Mi"
