@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_USERNAME = "yogi2112"
         IMAGE_NAME = "flask-backend"
+        IMAGE_NAME = "flask-demo"
         IMAGE_TAG = "latest"
         K8S_NAMESPACE = "flask-redis"
     }
@@ -53,7 +54,7 @@ pipeline {
                     kubectl apply -f k8s/flask-blue-deployment.yaml
                     kubectl apply -f k8s/flask-service.yaml
 
-#                    kubectl rollout status deployment/flask-backend -n $K8S_NAMESPACE
+                    kubectl rollout status deployment/flask-backend -n $K8S_NAMESPACE
                 '''
             }
         }
