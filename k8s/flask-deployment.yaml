@@ -2,7 +2,7 @@
 # kind: Deployment
 
 # metadata:
-#   name: flask-backend-blue
+#   name: flask-backend
 #   labels:
 #     app: flask-backend
 #     version: blue
@@ -66,9 +66,9 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: flask-backend-green
+  name: flask-backend
   labels:
-    app: flask-backend-green
+    app: flask-backend
     version: green
   namespace: flask-redis
 
@@ -76,17 +76,17 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask-backend-green
+      app: flask-backend
       version: green
 
   template:
     metadata:
       labels:
-        app: flask-backend-green
+        app: flask-backend
         version: green
     spec:
       containers:
-        - name: flask-backend-green
+        - name: flask-backend
           image: nginx:latest
           imagePullPolicy: Always
           ports:

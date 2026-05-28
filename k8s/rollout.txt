@@ -1,0 +1,5 @@
+This command is for revert to previous image/version if new verison is not working or failed.
+
+--> kubectl set image deployment/deployment_name Cont_name=User_name/Image_name -n namespace_name
+
+--> kubectl rollout status deployment/deployment_name -n namespace_name
