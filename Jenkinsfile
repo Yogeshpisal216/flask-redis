@@ -54,7 +54,6 @@ pipeline {
                     kubectl apply -f k8s/flask-blue-deployment.yaml
                     kubectl apply -f k8s/flask-service.yaml
 
-                    kubectl rollout status deployment/flask-backend -n $K8S_NAMESPACE
                 '''
             }
         }
