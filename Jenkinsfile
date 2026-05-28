@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = "yogi2112"
-        IMAGE_NAME = "flask-backend"
+        //IMAGE_NAME = "flask-backend"
         IMAGE_NAME = "flask-demo"
         IMAGE_TAG = "latest"
         K8S_NAMESPACE = "flask-redis"
