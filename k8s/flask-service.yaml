@@ -7,8 +7,8 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: flask-backend-green
-    version: green
+    app: flask-backend
+    version: blue
   ports:
     - port: 5000
       targetPort: 5000
