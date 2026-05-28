@@ -8,7 +8,7 @@ spec:
   type: NodePort
   selector:
     app: flask-backend
-    version: green
+    version: blue
   ports:
     - port: 5000
       targetPort: 5000
