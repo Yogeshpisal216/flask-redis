@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh '''
                     docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG .
-                    docker tag $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+                    docker tag $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
         }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh '''
                     docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
-                    docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+                    docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
         }
@@ -49,9 +49,9 @@ pipeline {
                     kubectl apply -f k8s/redis-deployment.yaml
                     kubectl apply -f k8s/redis-service.yaml
 
-                    sed -i "s|YOUR_DOCKERHUB_USERNAME/flask-redis-app:latest|$DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG|g" k8s/flask-blue-deployment.yaml
+                    sed -i "s|YOUR_DOCKERHUB_USERNAME/flask-redis-app:latest|$DOCKERHUB_USERNAME/$IMAGE_NAME:$IMAGE_TAG|g" k8s/flask-deployment.yaml
 
-                    kubectl apply -f k8s/flask-blue-deployment.yaml
+                    kubectl apply -f k8s/flask-deployment.yaml
                     kubectl apply -f k8s/flask-service.yaml
 
                 '''
