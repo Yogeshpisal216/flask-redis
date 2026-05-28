@@ -16,8 +16,7 @@ redis_client = redis.Redis(
 @app.route("/")
 def home():
     return jsonify({
-        "message": "Flask Redis app is running on blue version...",
-        #"message": "Flask Redis app is running on green version...",
+        "message": "Flask Redis app is running...",
         "redis_host": REDIS_HOST
     })
 
